@@ -31,6 +31,7 @@ public class USACO {
         System.out.println(pasture[i][j]);
       }
       currentLine = lines.nextLine();
+      nums = currentLine.split(" ",c);
     }
     return 0;
   };
