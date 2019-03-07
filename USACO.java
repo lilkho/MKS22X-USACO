@@ -7,34 +7,41 @@ public class USACO {
     // array of 6x6 squares, making the pasture
     int[][] pasture;
     // row, column, elevation, down
-    int r=0;int c=0;int e=0;int d=0;
+    int R=0;int C=0;int E=0;int N=0;
     //getting input file
     File input = new File(filename);
     Scanner lines = new Scanner(input);
     String currentLine = lines.nextLine();
     //getting r,c,e,n values
     String[] nums = currentLine.split(" ",4);
-    for (int i=0;i<nums.length;i++) {
-      if (i==0) r=Integer.parseInt(nums[i]);
-      if (i==1) c=Integer.parseInt(nums[i]);
-      if (i==2) e=Integer.parseInt(nums[i]);
-      if (i==3) d=Integer.parseInt(nums[i]);
-    }
+    R=Integer.parseInt(nums[0]);
+    C=Integer.parseInt(nums[1]);
+    E=Integer.parseInt(nums[2]);
+    N=Integer.parseInt(nums[3]);
     //getting pasture
-    pasture = new int[r][c];
+    pasture = new int[R][C];
     currentLine = lines.nextLine();
-    nums = currentLine.split(" ",c);
-    for (int i=0;i<r;i++) {
+    nums = currentLine.split(" ",C);
+    for (int i=0;i<R;i++) {
       System.out.println(currentLine);
-      for (int j=0;j<c;j++) {
+      for (int j=0;j<C;j++) {
         pasture[i][j]=Integer.parseInt(nums[j]);
         System.out.println(pasture[i][j]);
       }
       currentLine = lines.nextLine();
-      nums = currentLine.split(" ",c);
+      nums = currentLine.split(" ",C);
+    }
+    //getting cow movements
+    int R_s=0;int C_s=0;int D_s=0;
+    while (lines.hasNextLine()) {
+      currentLine = lines.nextLine();
+      nums = currentLine.split(" ",3);
+      R_s=Integer.parseInt(nums[0]);
+      C_s=Integer.parseInt(nums[1]);
+      D_s=Integer.parseInt(nums[2]);
     }
     return 0;
-  };
+  }
   public static void main(String[] args) {
     String filename = args[0];
     try {
