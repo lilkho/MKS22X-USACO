@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -29,21 +31,51 @@ public class USACO {
       currentLine = lines.nextLine();
       nums = currentLine.split(" ",C);
     }
+    System.out.println(toString(pasture));
     //getting cow movements
     int R_s=0;int C_s=0;int D_s=0;
+    nums = currentLine.split(" ",3);
+    R_s=Integer.parseInt(nums[0]);
+    C_s=Integer.parseInt(nums[1]);
+    D_s=Integer.parseInt(nums[2]);
+    System.out.println(""+R_s+C_s+D_s);
+    stomp(R_s,C_s,D_s,pasture);
     while (lines.hasNextLine()) {
+      currentLine = lines.nextLine();
       nums = currentLine.split(" ",3);
       R_s=Integer.parseInt(nums[0]);
       C_s=Integer.parseInt(nums[1]);
       D_s=Integer.parseInt(nums[2]);
       System.out.println(""+R_s+C_s+D_s);
       stomp(R_s,C_s,D_s,pasture);
-      currentLine = lines.nextLine();
     }
     return 0;
   }
   private static void stomp(int r, int c, int d, int[][] pasture) {
-    for (int i=r)
+    int maxE = pasture[r][c];
+    for (int i=r-1;i<r+2;i++) {
+      for (int j=c-1;j<c+2;j++) {
+        maxE = Math.max(maxE,pasture[i][j]);
+        System.out.println(maxE);
+      }
+    }
+    for (int i=r-1;i<r+2;i++) {
+      for (int j=c-1;j<c+2;j++) {
+        pasture[i][j] = Math.min(pasture[i][j],maxE-d);
+        System.out.println(pasture[i][j]);
+      }
+    }
+    System.out.println(toString(pasture));
+  }
+  private static String toString(int[][] array) {
+    String s = "";
+    for (int i=0;i<array.length;i++) {
+      for (int j=0;j<array[i].length;j++) {
+        s+=array[i][j]+" ";
+      }
+      s+="\n";
+    }
+    return s;
   }
   public static void main(String[] args) {
     String filename = args[0];
