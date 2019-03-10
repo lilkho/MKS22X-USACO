@@ -31,7 +31,6 @@ public class USACO {
       currentLine = lines.nextLine();
       nums = currentLine.split(" ",C);
     }
-    System.out.println(toString(pasture));
     //getting cow movements
     int R_s=0;int C_s=0;int D_s=0;
     for (int i=0;i<N;i++) {
@@ -43,6 +42,7 @@ public class USACO {
       if (lines.hasNextLine())
         currentLine = lines.nextLine();
     }
+    //getting depth
     int depth=0;
     for (int i=0;i<pasture.length;i++) {
       for (int j=0;j<pasture[i].length;j++) {
@@ -54,7 +54,7 @@ public class USACO {
         depth+=pasture[i][j];
       }
     }
-    System.out.println(toString(pasture));
+    //multiplying by 72 * 72 which is just 5184
     return depth * 5184;
   }
   private static void stomp(int r, int c, int d, int[][] pasture) {
@@ -71,7 +71,32 @@ public class USACO {
         pasture[i][j] = Math.min(pasture[i][j],maxE-d);
       }
     }
+  }
+  public static int silver(String filename) throws FileNotFoundException{
+    //getting input file
+    File input = new File(filename);
+    Scanner lines = new Scanner(input);
+    String currentLine = lines.nextLine();
+    //getting N rows,M columns,T seconds
+    String[] ins = currentLine.split(" ",3);
+    int N=Integer.parseInt(ins[0]);
+    int M=Integer.parseInt(ins[1]);
+    int T=Integer.parseInt(ins[2]);
+    //creating pasture
+    int[][] pasture = new int[N][M];
+    for (int i=0;i<N;i++) {
+      currentLine = lines.nextLine();
+      ins = currentLine.split("");
+      for (int j=0;j<M;j++) {
+        if (ins[j].equals(".")) {
+          pasture[i][j]=0;
+        } else {
+          pasture[i][j]=-1;
+        }
+      }
+    }
     System.out.println(toString(pasture));
+    return 0;
   }
   private static String toString(int[][] array) {
     String s = "";
@@ -87,6 +112,12 @@ public class USACO {
     String filename = args[0];
     try {
       System.out.println(bronze(filename));
+    } catch(FileNotFoundException F) {
+      System.out.println(filename+" not found.");
+    }
+    filename = args[1];
+    try {
+      System.out.println(silver(filename));
     } catch(FileNotFoundException F) {
       System.out.println(filename+" not found.");
     }
