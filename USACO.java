@@ -43,12 +43,19 @@ public class USACO {
       if (lines.hasNextLine())
         currentLine = lines.nextLine();
     }
-    for () {
-      for () {
-        
+    int depth=0;
+    for (int i=0;i<pasture.length;i++) {
+      for (int j=0;j<pasture[i].length;j++) {
+        if (pasture[i][j]<E) {
+          pasture[i][j]=E-pasture[i][j];
+        } else {
+          pasture[i][j]=0;
+        }
+        depth+=pasture[i][j];
       }
     }
-    return 0;
+    System.out.println(toString(pasture));
+    return depth * 5184;
   }
   private static void stomp(int r, int c, int d, int[][] pasture) {
     //find max elevation
