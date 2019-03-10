@@ -23,10 +23,8 @@ public class USACO {
     currentLine = lines.nextLine();
     nums = currentLine.split(" ",C);
     for (int i=0;i<R;i++) {
-      System.out.println(currentLine);
       for (int j=0;j<C;j++) {
         pasture[i][j]=Integer.parseInt(nums[j]);
-        System.out.println(pasture[i][j]);
       }
       currentLine = lines.nextLine();
       nums = currentLine.split(" ",C);
@@ -34,13 +32,18 @@ public class USACO {
     //getting cow movements
     int R_s=0;int C_s=0;int D_s=0;
     while (lines.hasNextLine()) {
-      currentLine = lines.nextLine();
       nums = currentLine.split(" ",3);
       R_s=Integer.parseInt(nums[0]);
       C_s=Integer.parseInt(nums[1]);
       D_s=Integer.parseInt(nums[2]);
+      System.out.println(""+R_s+C_s+D_s);
+      stomp(R_s,C_s,D_s,pasture);
+      currentLine = lines.nextLine();
     }
     return 0;
+  }
+  private static void stomp(int r, int c, int d, int[][] pasture) {
+    for (int i=r)
   }
   public static void main(String[] args) {
     String filename = args[0];
