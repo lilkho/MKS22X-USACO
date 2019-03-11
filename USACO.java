@@ -97,12 +97,25 @@ public class USACO {
     }
     //getting r1,c1,r2,c2
     ins = lines.nextLine().split(" ",4);
-    int R1=Integer.parseInt(ins[0]);
-    int C1=Integer.parseInt(ins[1]);
-    int R2=Integer.parseInt(ins[2]);
-    int C2=Integer.parseInt(ins[3]);
+    int R1=Integer.parseInt(ins[0])-1;
+    int C1=Integer.parseInt(ins[1])-1;
+    int R2=Integer.parseInt(ins[2])-1;
+    int C2=Integer.parseInt(ins[3])-1;
+    for (int i=0;i<T;i++) {
+      pasture=bessie(pasture);
+    }
     System.out.println(toString(pasture));
     return 0;
+  }
+  private static int[][] bessie(int[][] pasture) {
+    int[] movs = {1,0,-1,0,0,1,0,-1};
+    int[][] moves = new int[pasture.length][pasture[0].length];
+    for (int i=0;i<moves.length;i++) {
+      for (int j=0;j<moves.length;j++) {
+
+      }
+    }
+    return moves;
   }
   private static String toString(int[][] array) {
     String s = "";
