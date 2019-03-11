@@ -105,7 +105,7 @@ public class USACO {
       pasture=bessieMoves(pasture);
     }
     System.out.println(toString(pasture));
-    return 0;
+    return pasture[R2][C2];
   }
   private static int[][] bessieMoves(int[][] pasture) {
     int[] movs = {1,0,-1,0,0,1,0,-1};
@@ -115,15 +115,13 @@ public class USACO {
         if (pasture[i][j]==-1) {
           moves[i][j]=-1;
         } else {
-          int possMoves=0;
           for (int k=0;k<movs.length;k+=2) {
-            if (i+movs[k]>0 && i+movs[k]<=pasture.length
-            && j+movs[k+1]>0 && j+movs[k+1]<=pasture[0].length
+            if (i+movs[k]>0 && i+movs[k]<pasture.length
+            && j+movs[k+1]>0 && j+movs[k+1]<pasture[0].length
             && pasture[i+movs[k]][j+movs[k+1]]!=-1) {
-              possMoves+=pasture[i+movs[k]][j+movs[k+1]];
+              moves[i+movs[k]][j+movs[k+1]]++;
             }
           }
-          moves[i][j]=possMoves;
         }
       }
     }
