@@ -101,6 +101,7 @@ public class USACO {
     int C1=Integer.parseInt(ins[1])-1;
     int R2=Integer.parseInt(ins[2])-1;
     int C2=Integer.parseInt(ins[3])-1;
+    //making it move every second
     for (int i=0;i<T;i++) {
       pasture=bessieMoves(pasture);
     }
@@ -108,6 +109,7 @@ public class USACO {
     return pasture[R1][C1];
   }
   private static int[][] bessieMoves(int[][] pasture) {
+    //right left up down
     int[] movs = {1,0,-1,0,0,1,0,-1};
     int[][] moves = new int[pasture.length][pasture[0].length];
     for (int i=0;i<moves.length;i++) {
@@ -115,10 +117,12 @@ public class USACO {
         if (pasture[i][j]==-1) {
           moves[i][j]=-1;
         } else {
+          //getting possible moves
           for (int k=0;k<movs.length;k+=2) {
             if (i+movs[k]>0 && i+movs[k]<pasture.length
             && j+movs[k+1]>0 && j+movs[k+1]<pasture[0].length
             && pasture[i+movs[k]][j+movs[k+1]]!=-1) {
+              //i just dont know what to do here??
               moves[i][j]++;
             }
           }
