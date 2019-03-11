@@ -95,6 +95,12 @@ public class USACO {
         }
       }
     }
+    //getting r1,c1,r2,c2
+    ins = lines.nextLine().split(" ",4);
+    int R1=Integer.parseInt(ins[0]);
+    int C1=Integer.parseInt(ins[1]);
+    int R2=Integer.parseInt(ins[2]);
+    int C2=Integer.parseInt(ins[3]);
     System.out.println(toString(pasture));
     return 0;
   }
