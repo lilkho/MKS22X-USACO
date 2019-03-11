@@ -102,17 +102,27 @@ public class USACO {
     int R2=Integer.parseInt(ins[2])-1;
     int C2=Integer.parseInt(ins[3])-1;
     for (int i=0;i<T;i++) {
-      pasture=bessie(pasture);
+      pasture=bessieMoves(pasture);
     }
     System.out.println(toString(pasture));
     return 0;
   }
-  private static int[][] bessie(int[][] pasture) {
+  private static int[][] bessieMoves(int[][] pasture) {
     int[] movs = {1,0,-1,0,0,1,0,-1};
     int[][] moves = new int[pasture.length][pasture[0].length];
     for (int i=0;i<moves.length;i++) {
       for (int j=0;j<moves.length;j++) {
+        if (pasture[i][j]==-1) {
+          moves[i][j]=-1;
+        } else {
+          for (int k=0;k<movs.length;k++) {
+            if (i+movs[k]<0 || i+movs[k]>=pasture.length
+            || j+movs[k+1]<0 || j+movs[k+1]>=pasture.length
+            && pasture[i+movs[k]][j+movs[k+1]]!=-1) {
 
+            }
+          }
+        }
       }
     }
     return moves;
