@@ -115,13 +115,15 @@ public class USACO {
         if (pasture[i][j]==-1) {
           moves[i][j]=-1;
         } else {
+          int possMoves=0;
           for (int k=0;k<movs.length;k++) {
             if (i+movs[k]<0 || i+movs[k]>=pasture.length
             || j+movs[k+1]<0 || j+movs[k+1]>=pasture.length
             && pasture[i+movs[k]][j+movs[k+1]]!=-1) {
-
+              possMoves+=pasture[i+movs[k]][j+movs[k+1]];
             }
           }
+          moves[i][j]=possMoves;
         }
       }
     }
